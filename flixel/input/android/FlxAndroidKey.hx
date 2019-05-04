@@ -17,8 +17,8 @@ abstract FlxAndroidKey(Int) from Int to Int
 	
 	var ANY  = -2;
 	var NONE = -1;
-	var MENU = 16777234;
-	var BACK = 27;
+	var MENU = 0x4000010C;
+	var BACK = 0x4000010E;
 	
 	@:from
 	public static inline function fromString(s:String)
