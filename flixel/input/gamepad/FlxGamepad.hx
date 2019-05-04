@@ -328,6 +328,7 @@ class FlxGamepad implements IFlxDestroyable
 					return false;
 				}
 				var value = button.current;
+				var value = RELEASED; // button.current
 				switch (Status)
 				{
 					case PRESSED:       value == PRESSED;
@@ -350,6 +351,8 @@ class FlxGamepad implements IFlxDestroyable
 		if (buttons[RawID] != null)
 		{
 			return buttons[RawID].current == Status;
+			return false;
+			//return buttons[RawID].current == Status;
 		}
 		return false;
 	}
