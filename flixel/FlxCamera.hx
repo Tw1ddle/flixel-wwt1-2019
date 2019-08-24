@@ -1,5 +1,6 @@
 package flixel;
 
+import flash.display.TriangleCulling;
 import flash.display.Bitmap;
 import flash.display.BitmapData;
 import flash.display.DisplayObject;
@@ -744,7 +745,7 @@ class FlxCamera extends FlxBasic
 	}
 
 	public function drawTriangles(graphic:FlxGraphic, vertices:DrawData<Float>, indices:DrawData<Int>, uvtData:DrawData<Float>, ?colors:DrawData<Int>,
-			?position:FlxPoint, ?blend:BlendMode, repeat:Bool = false, smoothing:Bool = false):Void
+			?position:FlxPoint, ?blend:BlendMode, repeat:Bool = false, smoothing:Bool = false, ?culling:TriangleCulling):Void
 	{
 		if (FlxG.renderBlit)
 		{
@@ -791,7 +792,7 @@ class FlxCamera extends FlxBasic
 			{
 				trianglesSprite.graphics.clear();
 				trianglesSprite.graphics.beginBitmapFill(graphic.bitmap, null, repeat, smoothing);
-				trianglesSprite.graphics.drawTriangles(drawVertices, indices, uvtData);
+				trianglesSprite.graphics.drawTriangles(drawVertices, indices, uvtData, culling);
 				trianglesSprite.graphics.endFill();
 
 				// TODO: check this block of code for cases, when zoom < 1 (or initial zoom?)...
@@ -1800,6 +1801,7 @@ class FlxCamera extends FlxBasic
 	{
 		angle = Angle;
 		flashSprite.rotation = Angle;
+		
 		return Angle;
 	}
 
